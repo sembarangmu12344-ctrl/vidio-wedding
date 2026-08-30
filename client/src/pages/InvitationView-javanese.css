@@ -1,0 +1,462 @@
+/* Additional Javanese Styles */
+
+/* Quran Section */
+.quran-section {
+  background: linear-gradient(180deg, #F5F1ED 0%, white 50%, #F5F1ED 100%);
+}
+
+.quran-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(201, 169, 97, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.quran-ornament {
+  font-size: 40px;
+  color: var(--gold);
+  margin: 20px 0;
+  opacity: 0.6;
+}
+
+.quran-arabic {
+  font-size: 32px;
+  color: var(--dark);
+  margin: 30px 0;
+  line-height: 2;
+  font-family: 'Times New Roman', serif;
+  font-weight: bold;
+  direction: rtl;
+}
+
+.quran-latin {
+  font-size: 16px;
+  color: var(--accent);
+  margin: 25px 0;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.quran-source {
+  font-size: 14px;
+  color: var(--primary);
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+/* Javanese Couple Section */
+.javanese-couple {
+  background: linear-gradient(135deg, #F5F1ED 0%, #E8DFD6 100%);
+  position: relative;
+}
+
+.javanese-couple::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 15px,
+    rgba(139, 115, 85, 0.02) 15px,
+    rgba(139, 115, 85, 0.02) 30px
+  );
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.couple-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.javanese-card {
+  text-align: center;
+}
+
+.javanese-photo-frame {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.photo-ornament {
+  position: absolute;
+  font-size: 50px;
+  color: var(--gold);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.photo-ornament.top {
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.photo-ornament.bottom {
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.javanese-card .couple-photo {
+  width: 280px;
+  height: 380px;
+  margin: 0 auto;
+  border-radius: 200px 200px 20px 20px;
+  overflow: hidden;
+  border: 5px solid var(--gold);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.javanese-card .couple-photo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 200px 200px 20px 20px;
+  pointer-events: none;
+}
+
+.couple-name {
+  font-size: 28px;
+  color: var(--dark);
+  margin-bottom: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+}
+
+.couple-parents {
+  color: var(--accent);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+/* Couple Divider */
+.couple-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.divider-ornament {
+  font-size: 30px;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.ampersand-large {
+  font-size: 64px;
+  color: var(--primary);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+}
+
+/* Story Section */
+.story-section {
+  background: white;
+}
+
+.story-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  background: linear-gradient(135deg, #F5F1ED 0%, white 100%);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(201, 169, 97, 0.15);
+}
+
+.story-icon {
+  font-size: 50px;
+  margin-bottom: 25px;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.story-text {
+  font-size: 17px;
+  color: var(--accent);
+  line-height: 2;
+  font-style: italic;
+}
+
+/* Javanese Event Section */
+.javanese-event {
+  background: linear-gradient(135deg, #C9B8A8 0%, #A89585 100%);
+  position: relative;
+}
+
+.javanese-event::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 25px,
+    rgba(201, 169, 97, 0.05) 25px,
+    rgba(201, 169, 97, 0.05) 50px
+  );
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.javanese-event-card {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(201, 169, 97, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.javanese-event-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+  animation: rotate-bg 20s linear infinite;
+}
+
+@keyframes rotate-bg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.javanese-event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.event-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.event-title {
+  font-size: 28px;
+  color: var(--dark);
+  margin-bottom: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.event-divider {
+  font-size: 24px;
+  color: var(--gold);
+  margin: 15px 0;
+  opacity: 0.7;
+}
+
+.event-location {
+  margin: 25px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-map {
+  padding: 14px 35px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-map:hover {
+  background: #B89751;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(201, 169, 97, 0.4);
+}
+
+/* Gallery Section */
+.gallery-section {
+  background: white;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(139, 115, 85, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-overlay span {
+  font-size: 60px;
+  color: white;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-item:hover .gallery-overlay span {
+  transform: scale(1);
+}
+
+/* Responsive - Javanese */
+@media (max-width: 968px) {
+  .couple-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .couple-divider {
+    order: 2;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .javanese-frame {
+    padding: 60px 30px;
+  }
+
+  .bismillah {
+    font-size: 24px;
+  }
+
+  .quran-arabic {
+    font-size: 26px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .javanese-ornament {
+    font-size: 40px;
+  }
+
+  .ornament-topleft,
+  .ornament-topright {
+    top: 20px;
+  }
+
+  .ornament-topleft,
+  .ornament-bottomleft {
+    left: 20px;
+  }
+
+  .ornament-topright,
+  .ornament-bottomright {
+    right: 20px;
+  }
+
+  .ornament-bottomleft,
+  .ornament-bottomright {
+    bottom: 20px;
+  }
+
+  .javanese-card .couple-photo {
+    width: 240px;
+    height: 320px;
+  }
+
+  .ampersand-large {
+    font-size: 48px;
+  }
+
+  .events-grid {
+    gap: 30px;
+  }
+
+  .javanese-event-card {
+    padding: 40px 25px;
+  }
+}
