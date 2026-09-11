@@ -11,6 +11,9 @@
   overflow: hidden;
   z-index: 9999;
   --shimmer-x: -100%;
+  opacity: 1;
+  visibility: visible;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 /* Batik background pattern */
@@ -45,13 +48,16 @@
   height: 500px;
   filter: drop-shadow(0 20px 50px rgba(201, 169, 97, 0.5));
   z-index: 2;
-  opacity: 1; /* Ensure visible */
+  opacity: 0; /* Start hidden for GSAP animation */
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
 }
 
 .gunungan-svg {
   width: 100%;
   height: 100%;
   opacity: 1;
+  transform-style: preserve-3d;
 }
 
 /* Floating ornaments */
@@ -59,6 +65,9 @@
   position: absolute;
   z-index: 3;
   filter: drop-shadow(0 5px 15px rgba(201, 169, 97, 0.6));
+  opacity: 0; /* Start hidden for GSAP animation */
+  transform-origin: center center;
+  will-change: transform, opacity, rotate;
 }
 
 .ornament-1 {
@@ -79,8 +88,10 @@
 .flower-ornament {
   font-size: 80px;
   color: #C9A961;
-  animation: float-rotate 4s ease-in-out infinite;
-  text-shadow: 0 5px 20px rgba(201, 169, 97, 0.8);
+  text-shadow: 
+    0 5px 20px rgba(201, 169, 97, 0.8),
+    0 0 40px rgba(201, 169, 97, 0.4);
+  will-change: transform;
 }
 
 @keyframes float-rotate {
@@ -136,12 +147,14 @@
   text-align: center;
   z-index: 4;
   color: white;
-  opacity: 1; /* Ensure visible */
+  opacity: 1;
+  pointer-events: none;
 }
 
 .intro-label {
   margin-bottom: 30px;
-  opacity: 1;
+  opacity: 0; /* Start hidden for GSAP animation */
+  will-change: transform, opacity, filter;
 }
 
 .bismillah {
@@ -154,6 +167,7 @@
   font-family: 'Times New Roman', serif;
   letter-spacing: 3px;
   opacity: 1;
+  line-height: 1.5;
 }
 
 .intro-label p {
@@ -183,6 +197,9 @@
     0 5px 20px rgba(0, 0, 0, 0.6);
   margin: 0;
   line-height: 1;
+  opacity: 0; /* Start hidden for GSAP animation */
+  will-change: transform, opacity, text-shadow;
+  letter-spacing: 2px;
 }
 
 .ampersand-intro {
@@ -190,8 +207,12 @@
   color: #C9A961;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  text-shadow: 0 5px 15px rgba(201, 169, 97, 0.8);
+  text-shadow: 
+    0 5px 15px rgba(201, 169, 97, 0.8),
+    0 0 30px rgba(201, 169, 97, 0.5);
   margin: 10px 0;
+  opacity: 0; /* Start hidden for GSAP animation */
+  will-change: transform, opacity;
 }
 
 /* Light rays */

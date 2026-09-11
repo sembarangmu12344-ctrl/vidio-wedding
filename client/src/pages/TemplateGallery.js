@@ -1,136 +1,99 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './TemplateGallery.css';
 
+const templates = [
+  {
+    id: 'javanese-elegant',
+    name: 'Javanese Elegant',
+    icon: '🕌',
+    desc: 'Template mewah bergaya Jawa klasik — ornamen batik, gunungan, animasi GSAP.',
+    status: 'available',
+    badge: '✨ Tersedia',
+  },
+  {
+    id: 'modern-minimalist',
+    name: 'Modern Minimalist',
+    icon: '✨',
+    desc: 'Desain bersih dan modern dengan tipografi elegan.',
+    status: 'soon',
+    badge: '🔜 Segera Hadir',
+  },
+  {
+    id: 'luxury-gold',
+    name: 'Luxury Gold',
+    icon: '👑',
+    desc: 'Mewah berlapis emas dengan sentuhan premium.',
+    status: 'soon',
+    badge: '🔜 Segera Hadir',
+  },
+  {
+    id: 'floral-garden',
+    name: 'Floral Garden',
+    icon: '🌸',
+    desc: 'Nuansa taman bunga yang romantis dan segar.',
+    status: 'later',
+    badge: '📅 Akan Datang',
+  },
+];
+
 const TemplateGallery = () => {
-  const [filter, setFilter] = useState('all');
+  const navigate = useNavigate();
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedPackage = urlParams.get('package') || 'basic';
 
-  const templates = [
-    {
-      id: 'javanese-elegant',
-      name: 'Javanese Elegant',
-      category: 'traditional',
-      thumbnail: 'https://via.placeholder.com/400x600/8B7355/FFFFFF?text=Javanese+Elegant',
-      description: 'Template elegan dengan ornamen Jawa klasik dan gerbang gunungan',
-      features: ['Video 3D Intro', 'Animasi Kupu-kupu', 'Musik Gamelan']
-    },
-    {
-      id: 'modern-minimalist',
-      name: 'Modern Minimalist',
-      category: 'modern',
-      thumbnail: 'https://via.placeholder.com/400x600/D4C5B9/333333?text=Modern+Minimalist',
-      description: 'Desain minimalis modern dengan typography yang clean',
-      features: ['Video Cinematic', 'Parallax Effect', 'Clean Layout']
-    },
-    {
-      id: 'rustic-garden',
-      name: 'Rustic Garden',
-      category: 'nature',
-      thumbnail: 'https://via.placeholder.com/400x600/A8B99C/FFFFFF?text=Rustic+Garden',
-      description: 'Tema garden party dengan elemen natural dan floral',
-      features: ['Video Floral', 'Animated Flowers', 'Natural Colors']
-    },
-    {
-      id: 'luxury-gold',
-      name: 'Luxury Gold',
-      category: 'luxury',
-      thumbnail: 'https://via.placeholder.com/400x600/C9A961/000000?text=Luxury+Gold',
-      description: 'Kemewahan dengan aksen emas dan desain premium',
-      features: ['Gold Animation', 'Premium Design', 'Elegant Typography']
-    },
-    {
-      id: 'boho-chic',
-      name: 'Boho Chic',
-      category: 'modern',
-      thumbnail: 'https://via.placeholder.com/400x600/E8C4A0/8B6F47?text=Boho+Chic',
-      description: 'Bohemian style yang artistik dan free-spirited',
-      features: ['Artistic Video', 'Watercolor Effect', 'Unique Layout']
-    },
-    {
-      id: 'classic-royal',
-      name: 'Classic Royal',
-      category: 'luxury',
-      thumbnail: 'https://via.placeholder.com/400x600/4A4A68/FFFFFF?text=Classic+Royal',
-      description: 'Klasik royal dengan sentuhan kerajaan',
-      features: ['Royal Video', 'Crown Elements', 'Elegant Frame']
-    }
-  ];
-
-  const categories = [
-    { id: 'all', label: 'Semua Template' },
-    { id: 'traditional', label: 'Tradisional' },
-    { id: 'modern', label: 'Modern' },
-    { id: 'nature', label: 'Natural' },
-    { id: 'luxury', label: 'Mewah' }
-  ];
-
-  const filteredTemplates = filter === 'all' 
-    ? templates 
-    : templates.filter(t => t.category === filter);
+  const handleSelect = (tpl) => {
+    if (tpl.status !== 'available') return;
+    navigate(`/editor/${tpl.id}?package=${selectedPackage}`);
+  };
 
   return (
-    <div className="template-gallery">
+    <div className="tg-root">
       {/* Header */}
-      <div className="gallery-header">
-        <Link to="/" className="back-button">← Kembali</Link>
+      <div className="tg-header">
+        <Link to="/" className="tg-back">← Kembali</Link>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="gallery-title">Pilih Template Favorit Anda</h1>
-          <p className="gallery-subtitle">
-            Koleksi template undangan digital yang elegan dan dapat dikustomisasi
-          </p>
+          <h1 className="tg-title">Pilih Template Undangan</h1>
+          <p className="tg-subtitle">Pilih template favoritmu, lalu sesuaikan isinya secara real-time</p>
         </motion.div>
       </div>
 
-      {/* Filter */}
-      <div className="gallery-filter">
-        {categories.map(cat => (
-          <button
-            key={cat.id}
-            className={`filter-btn ${filter === cat.id ? 'active' : ''}`}
-            onClick={() => setFilter(cat.id)}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Templates Grid */}
-      <div className="templates-grid">
-        {filteredTemplates.map((template, index) => (
+      {/* Grid */}
+      <div className="tg-grid">
+        {templates.map((tpl, i) => (
           <motion.div
-            key={template.id}
-            className="template-card"
-            initial={{ opacity: 0, y: 30 }}
+            key={tpl.id}
+            className={`tg-card ${tpl.status === 'available' ? 'tg-card-available' : 'tg-card-locked'}`}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            whileHover={{ y: -10 }}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
+            onClick={() => handleSelect(tpl)}
           >
-            <div className="template-thumbnail">
-              <img src={template.thumbnail} alt={template.name} />
-              <div className="template-overlay">
-                <Link to={`/editor/${template.id}`} className="btn btn-primary">
-                  Gunakan Template
-                </Link>
-                <button className="btn btn-secondary">Preview</button>
-              </div>
-            </div>
-            <div className="template-info">
-              <h3>{template.name}</h3>
-              <p>{template.description}</p>
-              <div className="template-features">
-                {template.features.map((feature, i) => (
-                  <span key={i} className="feature-tag">✨ {feature}</span>
-                ))}
-              </div>
-            </div>
+            <div className="tg-card-icon">{tpl.icon}</div>
+            <div className="tg-badge">{tpl.badge}</div>
+            <h2 className="tg-card-name">{tpl.name}</h2>
+            <p className="tg-card-desc">{tpl.desc}</p>
+            {tpl.status === 'available' ? (
+              <button className="tg-btn-select">
+                Gunakan Template →
+              </button>
+            ) : (
+              <span className="tg-btn-locked">Belum tersedia</span>
+            )}
           </motion.div>
         ))}
       </div>
+
+      {selectedPackage && (
+        <p className="tg-pkg-note">
+          Paket terpilih: <strong className={`tg-pkg-${selectedPackage}`}>{selectedPackage.toUpperCase()}</strong>
+        </p>
+      )}
     </div>
   );
 };

@@ -31,7 +31,7 @@ const HomePage = () => {
             dengan video cinematik & animasi interaktif
           </p>
           <div className="hero-buttons">
-            <Link to="/templates" className="btn btn-primary">
+            <Link to="/pricing" className="btn btn-primary">
               Mulai Sekarang
             </Link>
             <Link to="/templates" className="btn btn-secondary">
@@ -126,8 +126,8 @@ const HomePage = () => {
       >
         <h2>Siap Membuat Undangan Digital Anda?</h2>
         <p>Mulai sekarang dan ciptakan momen yang berkesan</p>
-        <Link to="/templates" className="btn btn-gold">
-          Pilih Template
+        <Link to="/pricing" className="btn btn-gold">
+          Lihat Paket & Harga
         </Link>
       </motion.section>
 

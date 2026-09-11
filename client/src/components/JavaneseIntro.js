@@ -12,103 +12,227 @@ const JavaneseIntro = ({ onComplete, coupleNames }) => {
   const namesRef = useRef(null);
 
   useEffect(() => {
-    console.log('JavaneseIntro mounted');
-    console.log('Refs:', {
-      container: containerRef.current,
-      gunungan: gununganRef.current,
-      text: textRef.current,
-      names: namesRef.current
-    });
+    // Add small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      console.log('🎬 JavaneseIntro GSAP animation starting');
 
-    const tl = gsap.timeline({
-      defaults: { ease: 'power2.out' },
-      onComplete: () => {
-        console.log('GSAP animation complete');
-        setTimeout(onComplete, 500);
-      },
-      onStart: () => {
-        console.log('GSAP animation started');
+      // Ensure all refs exist
+      if (!gununganRef.current || !textRef.current || !namesRef.current) {
+        console.error('❌ Some refs are not ready');
+        return;
       }
-    });
 
-    // Set initial states
-    gsap.set([gununganRef.current, ornament1Ref.current, ornament2Ref.current, ornament3Ref.current, textRef.current, namesRef.current], {
-      autoAlpha: 1
-    });
+      // GSAP Master Timeline - Cinematic Opening
+      const masterTL = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        onComplete: () => {
+          console.log('✅ GSAP animation complete - transitioning to main invitation');
+          if (onComplete) {
+            setTimeout(onComplete, 300);
+          }
+        }
+      });
 
-    // Scene 1: Gunungan muncul dari kecil dengan rotate (2 detik)
-    tl.from(gununganRef.current, {
-      scale: 0,
-      rotation: -180,
-      opacity: 0,
-      duration: 2,
-      ease: 'back.out(1.7)'
-    }, 0.5);
+      // === INITIAL STATE ===
+      gsap.set(containerRef.current, { 
+        opacity: 1, 
+        visibility: 'visible',
+        scale: 1 
+      });
+      
+      gsap.set(gununganRef.current, { 
+        opacity: 0, 
+        scale: 0.3, 
+        rotation: -15,
+        y: 50 
+      });
+      
+      gsap.set([ornament1Ref.current, ornament2Ref.current, ornament3Ref.current], { 
+        opacity: 0, 
+        scale: 0,
+        rotation: -45 
+      });
+      
+      gsap.set(textRef.current, { 
+        opacity: 0, 
+        y: 100,
+        scale: 0.8 
+      });
+      
+      gsap.set(namesRef.current.children, { 
+        opacity: 0, 
+        y: 120,
+        scale: 0.9 
+      });
 
-    // Scene 2: Ornamen muncul bergantian
-    tl.from(ornament1Ref.current, {
-      scale: 0,
-      rotation: 360,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'back.out(2)'
-    }, '-=1.2');
+      // === SCENE 1: Gunungan Grand Entrance (2.5s) ===
+      masterTL.to(gununganRef.current, {
+        scale: 1,
+        rotation: 0,
+        y: 0,
+        opacity: 1,
+        duration: 2.5,
+        ease: 'expo.out'
+      }, 0.3);
 
-    tl.from(ornament2Ref.current, {
-      scale: 0,
-      rotation: -360,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'back.out(2)'
-    }, '-=0.6');
+      // Gunungan subtle breathing effect
+      masterTL.to(gununganRef.current, {
+        scale: 1.02,
+        duration: 1.5,
+        yoyo: true,
+        repeat: 2,
+        ease: 'sine.inOut'
+      }, 1.5);
 
-    tl.from(ornament3Ref.current, {
-      scale: 0,
-      rotation: 360,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'back.out(2)'
-    }, '-=0.6');
+      // === SCENE 2: Ornamen Cascade (Staggered) ===
+      masterTL.to(ornament1Ref.current, {
+        scale: 1,
+        rotation: 360,
+        opacity: 0.8,
+        duration: 1.2,
+        ease: 'back.out(2.5)'
+      }, 1.5);
 
-    // Scene 3: Text "The Wedding of" fade in
-    tl.from(textRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power2.out'
-    }, '-=0.4');
+      masterTL.to(ornament2Ref.current, {
+        scale: 1,
+        rotation: -360,
+        opacity: 0.8,
+        duration: 1.2,
+        ease: 'back.out(2.5)'
+      }, 1.8);
 
-    // Scene 4: Nama mempelai muncul
-    tl.from(namesRef.current.children, {
-      y: 80,
-      opacity: 0,
-      stagger: 0.3,
-      duration: 1,
-      ease: 'power3.out'
-    }, '-=0.5');
+      masterTL.to(ornament3Ref.current, {
+        scale: 1,
+        rotation: 360,
+        opacity: 0.8,
+        duration: 1.2,
+        ease: 'back.out(2.5)'
+      }, 2.1);
 
-    // Scene 5: Pulse effect
-    tl.to(gununganRef.current, {
-      scale: 1.1,
-      duration: 0.4,
-      yoyo: true,
-      repeat: 1,
-      ease: 'sine.inOut'
-    }, '+=0.3');
+      // Ornamen floating animation
+      masterTL.to([ornament1Ref.current, ornament2Ref.current, ornament3Ref.current], {
+        y: -10,
+        duration: 2,
+        yoyo: true,
+        repeat: -1,
+        ease: 'sine.inOut',
+        stagger: 0.3
+      }, 2.5);
 
-    // Scene 6: Hold for 1 second
-    tl.to({}, { duration: 1 });
+      // === SCENE 3: Sacred Text Reveal ===
+      masterTL.to(textRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: 'power3.out'
+      }, 2.8);
 
-    // Scene 7: Fade out
-    tl.to(containerRef.current, {
-      opacity: 0,
-      scale: 1.2,
-      duration: 1,
-      ease: 'power2.in'
-    });
+      // Text glow effect
+      masterTL.to(textRef.current, {
+        filter: 'drop-shadow(0 0 20px rgba(201, 169, 97, 0.8))',
+        duration: 0.8,
+        yoyo: true,
+        repeat: 1,
+        ease: 'sine.inOut'
+      }, 3.5);
+
+      // === SCENE 4: Couple Names Grand Reveal (Staggered) ===
+      masterTL.to(namesRef.current.children, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        stagger: 0.4,
+        duration: 1.8,
+        ease: 'elastic.out(1, 0.6)'
+      }, 3.5);
+
+      // Names shine effect
+      masterTL.to(namesRef.current.children, {
+        textShadow: '0 0 30px rgba(201, 169, 97, 1), 0 0 60px rgba(201, 169, 97, 0.5)',
+        duration: 0.6,
+        yoyo: true,
+        repeat: 1,
+        ease: 'sine.inOut',
+        stagger: 0.2
+      }, 5);
+
+      // === SCENE 5: Hold & Breathe (2s) ===
+      masterTL.to({}, { duration: 2 });
+
+      // === SCENE 6: Majestic Exit - Gunungan splits open ===
+      
+      // Gunungan scale up & fade
+      masterTL.to(gununganRef.current, {
+        scale: 1.3,
+        opacity: 0,
+        rotation: 5,
+        duration: 1.2,
+        ease: 'power3.in'
+      });
+
+      // Ornamen scatter away
+      masterTL.to(ornament1Ref.current, {
+        x: -200,
+        y: -150,
+        rotation: 720,
+        opacity: 0,
+        scale: 0,
+        duration: 1,
+        ease: 'power2.in'
+      }, '-=1.2');
+
+      masterTL.to(ornament2Ref.current, {
+        x: 200,
+        y: -150,
+        rotation: -720,
+        opacity: 0,
+        scale: 0,
+        duration: 1,
+        ease: 'power2.in'
+      }, '-=1.2');
+
+      masterTL.to(ornament3Ref.current, {
+        y: 200,
+        rotation: 540,
+        opacity: 0,
+        scale: 0,
+        duration: 1,
+        ease: 'power2.in'
+      }, '-=1.2');
+
+      // Text ascends to heaven
+      masterTL.to([textRef.current, namesRef.current], {
+        y: -200,
+        opacity: 0,
+        scale: 0.7,
+        duration: 1,
+        ease: 'power3.in'
+      }, '-=1.2');
+
+      // === SCENE 7: Gate Opening Effect - Split dari tengah ===
+      masterTL.to(containerRef.current, {
+        clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+        duration: 1,
+        ease: 'power4.inOut'
+      }, '-=0.5');
+
+      // Final fade
+      masterTL.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, '-=0.3');
+
+      console.log('📊 Total animation duration:', masterTL.duration(), 'seconds');
+
+      return () => {
+        masterTL.kill();
+      };
+    }, 100);
 
     return () => {
-      tl.kill();
+      clearTimeout(timer);
     };
   }, [onComplete]);
 
