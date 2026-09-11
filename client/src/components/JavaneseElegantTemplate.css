@@ -1038,3 +1038,184 @@
   .jv-couple-photo-wrap { height: 340px; }
   .jv-couple-photo-img  { height: 340px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Android & iOS
+   Breakpoints: 640px (sudah ada), 480px (baru), 375px (baru)
+═══════════════════════════════════════════════════════════════ */
+
+/* ── 480px — small Android (Galaxy A series, Redmi, Oppo A) ── */
+@media (max-width: 480px) {
+  /* Cover */
+  .jv-cover-inner {
+    padding: 3rem 1.2rem 2.5rem;
+    width: 96%;
+  }
+  .jv-cover-name-groom,
+  .jv-cover-name-bride { font-size: clamp(2.6rem, 16vw, 4rem); }
+  .jv-cover-amp        { font-size: clamp(2.2rem, 14vw, 3.5rem); }
+  .jv-cover-tag        { font-size: .65rem; letter-spacing: .22em; }
+  .jv-cover-date       { font-size: .82rem; letter-spacing: .22em; }
+
+  /* Open overlay */
+  .jv-overlay-box { padding: 2.5rem 1.4rem 2.2rem; width: 94%; }
+  .jv-bismillah   { font-size: 1.35rem; }
+  .jv-guest-name  { font-size: 1.6rem; }
+  .jv-ol-name     { font-size: clamp(2rem, 10vw, 3rem); }
+  .jv-open-btn    { padding: .75rem 1.6rem; font-size: .7rem; }
+
+  /* Sections */
+  .jv-section { padding: 4rem 1rem 4.5rem; }
+  .jv-romantic-section { padding: 5rem 1rem; }
+  .jv-rsvp-section     { padding: 5rem 1rem 5.5rem; }
+  .jv-apology-section  { padding: 5rem 1rem; }
+  .jv-footer           { padding: 4rem 1rem; }
+  .jv-cd-section       { padding: 5rem 1rem; }
+  .jv-couple-section   { padding: 4rem 1rem; }
+
+  /* Date card */
+  .jv-date-card { padding: 2.2rem 1.2rem; margin: 1.2rem .8rem 0; }
+  .jv-date-day  { font-size: 1.8rem; }
+  .jv-cd-num    { font-size: 1.65rem; min-width: 52px; padding: .4rem .65rem; }
+  .jv-countdown { gap: .55rem; }
+
+  /* Couple arch */
+  .jv-arch-row  { gap: 2rem; }
+  .jv-arch-card { max-width: 200px; }
+  .jv-arch-frame { max-width: 180px; }
+  .jv-arch-name { font-size: 1.65rem; }
+  .jv-sep-amp   { font-size: 3rem; }
+
+  /* Couple photo */
+  .jv-couple-photo-wrap { height: 280px; }
+
+  /* Story */
+  .jv-story-quote { padding: 1.8rem 1.2rem; font-size: 1rem; }
+
+  /* Gallery */
+  .jv-gcard { width: 115px; }
+
+  /* Events */
+  .jv-event-card { padding: 2.5rem 1.2rem; }
+  .jv-events-grid { gap: 1.4rem; }
+
+  /* RSVP */
+  .jv-rsvp-form input,
+  .jv-rsvp-form select,
+  .jv-rsvp-form textarea { padding: .75rem .8rem; font-size: .92rem; }
+  .jv-rsvp-btn { padding: .9rem 1.8rem; font-size: .72rem; }
+
+  /* E-Angpao */
+  .jv-acard       { width: 100%; max-width: 300px; height: 155px; }
+  .jv-angpao-cards { gap: 1rem; }
+
+  /* Footer */
+  .jv-footer-names { font-size: clamp(2rem, 9vw, 3rem); }
+
+  /* Corner ornaments */
+  .jv-corner { width: 40px; height: 40px; }
+
+  /* Audio button — safe area bottom */
+  .jv-audio-btn {
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    right: 1.5rem;
+    width: 46px; height: 46px;
+  }
+
+  /* Gold lines */
+  .jv-gold-line { width: 80%; }
+}
+
+/* ── 375px — iPhone SE / small Android (Redmi 9C, Oppo A16) ── */
+@media (max-width: 375px) {
+  .jv-cover-inner {
+    padding: 2.5rem 1rem 2rem;
+    width: 98%;
+  }
+  .jv-cover-name-groom,
+  .jv-cover-name-bride { font-size: clamp(2.2rem, 17vw, 3.2rem); }
+  .jv-cover-amp        { font-size: clamp(1.9rem, 15vw, 2.8rem); }
+
+  .jv-overlay-box { padding: 2rem 1rem 1.8rem; }
+  .jv-bismillah   { font-size: 1.2rem; }
+  .jv-ol-name     { font-size: clamp(1.8rem, 11vw, 2.6rem); }
+
+  .jv-section { padding: 3.5rem .9rem 4rem; }
+
+  .jv-date-card   { padding: 1.8rem 1rem; }
+  .jv-cd-num      { font-size: 1.45rem; min-width: 46px; }
+  .jv-countdown   { gap: .4rem; }
+
+  .jv-arch-card   { max-width: 170px; }
+  .jv-arch-frame  { max-width: 155px; }
+  .jv-arch-name   { font-size: 1.4rem; }
+
+  .jv-couple-photo-wrap { height: 240px; }
+
+  .jv-gcard { width: 100px; }
+  .jv-gcard-inner { border-bottom-width: 1.5px; }
+
+  .jv-acard { height: 145px; }
+  .jv-acard-num   { font-size: 1rem; letter-spacing: .14em; }
+  .jv-acard-copy-btn { padding: .5rem 1.2rem; font-size: .65rem; }
+
+  .jv-event-card { padding: 2rem .9rem; }
+
+  .jv-rsvp-row { grid-template-columns: 1fr; }
+
+  .jv-corner { width: 34px; height: 34px; }
+
+  /* Prevent inner frame from touching edges */
+  .jv-cover-inner::before { inset: 8px; }
+  .jv-cover-inner::after  { inset: 13px; }
+}
+
+/* ── Landscape mobile — prevent broken tall sections ── */
+@media (max-width: 900px) and (orientation: landscape) {
+  .jv-cover        { min-height: 100svh; }
+  .jv-cover-inner  { padding: 2rem 2.5rem; }
+  .jv-cover-name-groom,
+  .jv-cover-name-bride { font-size: clamp(2rem, 8vh, 3.5rem); }
+  .jv-cover-amp    { font-size: clamp(1.8rem, 7vh, 3rem); }
+  .jv-couple-section { min-height: auto; padding: 3rem 1rem; }
+  .jv-romantic-section { padding: 4rem 1rem; }
+  .jv-rsvp-section { padding: 4rem 1.5rem; }
+  .jv-cd-section   { padding: 4rem 1.5rem; }
+  .jv-footer       { min-height: auto; padding: 3.5rem 1.5rem; }
+}
+
+/* ── Shared mobile helpers ── */
+@media (max-width: 640px) {
+  /* Prevent iframe/map overflow */
+  .jv-map iframe { width: 100% !important; }
+
+  /* YouTube embed fluid on mobile */
+  .jv-yt-wrap { max-width: 100%; }
+
+  /* Section sub-text readable */
+  .jv-section-sub { font-size: .95rem; }
+
+  /* Gallery cards — no horizontal scrollbar bleed */
+  .jv-gallery-scroll { overflow-x: hidden; }
+  .jv-gs-track { padding: .4rem 1rem 1rem; }
+
+  /* RSVP done screen */
+  .jv-rsvp-done h3 { font-size: 1.8rem; }
+
+  /* Angpao note */
+  .jv-angpao-note { font-size: .88rem; }
+
+  /* Apology / footer */
+  .jv-apology-text  { font-size: .95rem; }
+  .jv-apology-sign  { font-size: 1.8rem; }
+  .jv-footer-thanks { font-size: .9rem; }
+
+  /* Gcal buttons stacked */
+  .jv-date-gcal-row { gap: .6rem; }
+  .jv-gcal-btn { padding: .65rem 1.1rem; }
+
+  /* Safe area padding on fixed elements */
+  .jv-audio-btn {
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
+}

@@ -103,5 +103,28 @@
   .btn {
     padding: 10px 24px;
     font-size: 14px;
+    /* Minimum 44px touch target (iOS HIG) */
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 48px 12px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
   }
 }

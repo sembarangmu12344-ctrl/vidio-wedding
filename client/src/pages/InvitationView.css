@@ -781,3 +781,149 @@
     height: 250px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Android & iOS
+   Breakpoints: 768px (sudah ada), 480px & 375px (baru)
+═══════════════════════════════════════════════════════════ */
+
+/* ── Shared mobile base ── */
+.invitation-view {
+  overflow-x: hidden;
+}
+
+/* ── 480px — Android mid-range ── */
+@media (max-width: 480px) {
+  /* Open overlay */
+  .couple-names    { font-size: 32px; }
+  .open-title      { font-size: 18px; }
+  .open-date       { font-size: 16px; letter-spacing: 1px; margin-bottom: 28px; }
+  .btn-open        { padding: 12px 30px; font-size: 15px; min-height: 44px; }
+  .ornament-top,
+  .ornament-bottom { font-size: 28px; margin: 12px 0; }
+
+  /* Skip intro button */
+  .skip-intro-btn {
+    top: env(safe-area-inset-top, 16px);
+    right: 16px;
+    padding: 10px 22px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+
+  /* Gunungan frame */
+  .gunungan-frame { width: 88%; height: 420px; }
+
+  /* Cover section */
+  .cover-groom,
+  .cover-bride     { font-size: 40px; }
+  .ampersand       { font-size: 34px; }
+  .cover-date      { font-size: 17px; letter-spacing: 1px; }
+  .cover-hashtag   { font-size: 14px; }
+  .decorative-frame { padding: 36px 16px; border-radius: 14px; }
+  .javanese-frame   { padding: 48px 24px; border-radius: 14px; }
+
+  /* Javanese ornaments */
+  .javanese-ornament { font-size: 40px; }
+  .ornament-topleft,
+  .ornament-bottomleft { left: 16px; }
+  .ornament-topright,
+  .ornament-bottomright { right: 16px; }
+  .ornament-topleft,
+  .ornament-topright { top: 16px; }
+  .ornament-bottomleft,
+  .ornament-bottomright { bottom: 16px; }
+
+  /* Sections */
+  .section { padding: 52px 14px; }
+  .section-title { font-size: 32px; margin-bottom: 36px; }
+
+  /* Couple card */
+  .couple-grid    { gap: 24px; }
+  .couple-photo   { width: 220px; height: 300px; }
+  .couple-card h3 { font-size: 26px; }
+  .couple-card p  { font-size: 14px; }
+
+  /* Event card */
+  .event-card     { padding: 28px 16px; border-radius: 14px; }
+  .event-card h3  { font-size: 24px; }
+  .event-date     { font-size: 18px; }
+  .event-time     { font-size: 15px; }
+  .event-venue    { font-size: 16px; }
+  .event-address  { font-size: 14px; }
+
+  /* Map wrapper */
+  .map-wrapper { height: 220px; }
+  .event-map-container { border-radius: 8px; }
+
+  /* RSVP form */
+  .rsvp-form input,
+  .rsvp-form select,
+  .rsvp-form textarea {
+    padding: 12px 14px;
+    font-size: 15px;
+    min-height: 44px;
+  }
+  .rsvp-form textarea { min-height: 100px; }
+
+  /* Audio control */
+  .audio-control {
+    top: calc(12px + env(safe-area-inset-top));
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  /* Footer */
+  .invitation-footer { padding: 44px 16px; }
+  .footer-names { font-size: 26px; }
+}
+
+/* ── 375px — iPhone SE / small Android ── */
+@media (max-width: 375px) {
+  .couple-names { font-size: 26px; }
+  .open-date    { font-size: 14px; }
+
+  .cover-groom,
+  .cover-bride  { font-size: 34px; }
+  .ampersand    { font-size: 28px; }
+  .cover-label  { font-size: 15px; }
+  .decorative-frame { padding: 28px 12px; }
+  .javanese-frame   { padding: 36px 16px; }
+
+  .section       { padding: 44px 10px; }
+  .section-title { font-size: 26px; margin-bottom: 28px; }
+
+  .couple-photo { width: 185px; height: 260px; }
+
+  .event-card { padding: 22px 12px; }
+
+  .gunungan-frame { height: 360px; }
+  .intro-names    { font-size: 28px; }
+
+  .map-wrapper { height: 190px; }
+
+  .footer-names { font-size: 22px; }
+
+  /* Butterfly ornaments — scale down */
+  .butterfly-anim-1,
+  .butterfly-anim-2,
+  .butterfly-anim-3,
+  .javanese-ornament { font-size: 28px; }
+}
+
+/* ── Landscape mobile ── */
+@media (max-width: 900px) and (orientation: landscape) {
+  .open-overlay .open-content { padding: 20px 40px; }
+  .couple-names  { font-size: 34px; }
+  .ornament-top,
+  .ornament-bottom { font-size: 24px; margin: 8px 0; }
+
+  .cover-section.javanese-style { min-height: 100svh; }
+  .decorative-frame { padding: 30px 24px; }
+
+  .gunungan-frame { width: 50vw; height: 70vh; }
+
+  .map-wrapper { height: 200px; }
+}

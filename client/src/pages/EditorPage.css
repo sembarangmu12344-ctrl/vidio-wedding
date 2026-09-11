@@ -654,3 +654,192 @@
 @media (max-width: 1100px) {
   .ep-preview-label { display: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — EditorPage
+   Android & iOS: 768px, 600px, 480px, 375px
+═══════════════════════════════════════════════════════════ */
+
+/* ── 768px sudah ada di atas (900px), tapi kita perkuat ── */
+@media (max-width: 768px) {
+  :root {
+    --ep-header: 52px;
+    --ep-sidebar: 100%;
+  }
+
+  /* Header */
+  .ep-header { padding: 0 .8rem; gap: .5rem; }
+  .ep-title   { font-size: .85rem; }
+  .ep-back    { font-size: .75rem; }
+  .ep-btn     { padding: .4rem .85rem; font-size: .78rem; min-height: 36px; }
+
+  /* Body stacks vertically */
+  .ep-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: auto;
+  }
+
+  /* Left panel — limit height, scrollable */
+  .ep-panel-form {
+    max-height: 52vh;
+    min-height: 220px;
+    border-right: none;
+    border-bottom: 1px solid var(--ep-border);
+    overflow: hidden;
+  }
+
+  /* Tabs smaller */
+  .ep-tabs { grid-template-columns: repeat(4, 1fr); }
+  .ep-tab  { padding: .5rem .2rem; font-size: .66rem; }
+
+  /* Form scroll */
+  .ep-form-scroll { padding: .8rem .9rem; }
+
+  /* Preview panel fills rest */
+  .ep-panel-preview { min-height: 0; flex: 1; }
+
+  /* Device shell — shrink to fit narrow screens */
+  .ep-preview-frame { padding: 1rem .5rem .75rem; }
+
+  .ep-device-shell--android {
+    width: min(260px, 72vw);
+    height: calc(min(260px, 72vw) * 2);
+  }
+  .ep-device-shell--iphone {
+    width: min(248px, 68vw);
+    height: calc(min(248px, 68vw) * 2);
+  }
+
+  /* Scaler adjusts to new shell width */
+  .ep-device-shell--android .ep-device-screen {
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+  }
+  .ep-device-shell--iphone .ep-device-screen {
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+  }
+}
+
+/* ── 600px — tablet portrait / large phone ── */
+@media (max-width: 600px) {
+  .ep-header-right { gap: .4rem; }
+  /* Hide "Publish" label on smallest screens, keep icon */
+  .ep-btn-publish { display: none; }
+
+  .ep-panel-form { max-height: 48vh; }
+
+  /* Map row stacks */
+  .ep-map-row { flex-direction: column; }
+  .ep-btn-map { width: 100%; text-align: center; }
+
+  /* Gallery grid tighter */
+  .ep-photo-grid { grid-template-columns: repeat(3, 1fr); gap: .3rem; }
+
+  /* Bank cards full-width */
+  .ep-bank-entry { padding: .7rem .75rem .35rem; }
+}
+
+/* ── 480px — standard Android (Galaxy A, Redmi, Oppo) ── */
+@media (max-width: 480px) {
+  :root { --ep-header: 48px; }
+
+  .ep-header { padding: 0 .65rem; }
+  .ep-title  { font-size: .78rem; letter-spacing: .03em; }
+  .ep-back   { display: none; }        /* reclaim space */
+  .ep-btn    { padding: .38rem .7rem; font-size: .74rem; }
+
+  /* Tabs - 4 cols still but text shorter */
+  .ep-tab  { font-size: .62rem; padding: .45rem .15rem; }
+
+  /* Form fields */
+  .ep-field input,
+  .ep-field textarea,
+  .ep-field select {
+    font-size: .82rem;
+    padding: .45rem .6rem;
+    min-height: 38px;
+  }
+  .ep-field-label { font-size: .74rem; }
+
+  /* Upload button */
+  .ep-upload-btn { font-size: .78rem; padding: .5rem .8rem; }
+
+  /* Guest items */
+  .ep-guest-item   { flex-wrap: wrap; gap: .3rem; }
+  .ep-guest-actions { width: 100%; justify-content: flex-end; }
+
+  /* Photo preview */
+  .ep-photo-preview-img { max-height: 160px; }
+
+  /* Form footer */
+  .ep-form-footer { padding: .6rem .9rem; }
+
+  /* Preview device — max out remaining width */
+  .ep-preview-frame { padding: .75rem .4rem .5rem; }
+
+  .ep-device-shell--android {
+    width: min(240px, 88vw);
+    height: calc(min(240px, 88vw) * 2);
+  }
+  .ep-device-shell--iphone {
+    width: min(228px, 84vw);
+    height: calc(min(228px, 84vw) * 2);
+  }
+
+  /* Preview bar */
+  .ep-preview-bar { padding: 0 .6rem; height: 38px; }
+  .ep-device-toggle { gap: .2rem; }
+  .ep-device-btn    { padding: .25rem .55rem; font-size: .64rem; gap: .25rem; }
+
+  /* Toast */
+  .ep-toast { font-size: .8rem; padding: .6rem 1.1rem; bottom: calc(1.2rem + env(safe-area-inset-bottom)); }
+}
+
+/* ── 375px — iPhone SE / Redmi 9 ── */
+@media (max-width: 375px) {
+  .ep-title { font-size: .72rem; }
+  .ep-btn   { padding: .32rem .6rem; font-size: .7rem; }
+
+  .ep-tab   { font-size: .58rem; }
+
+  .ep-field input,
+  .ep-field textarea,
+  .ep-field select { font-size: .78rem; }
+
+  .ep-photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .ep-device-shell--android {
+    width: min(210px, 92vw);
+    height: calc(min(210px, 92vw) * 2);
+  }
+  .ep-device-shell--iphone {
+    width: min(200px, 88vw);
+    height: calc(min(200px, 88vw) * 2);
+  }
+}
+
+/* ── Landscape phone — editor side-by-side but compact ── */
+@media (max-width: 900px) and (orientation: landscape) {
+  .ep-body {
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+  }
+  .ep-panel-form {
+    max-height: none;
+    border-right: 1px solid var(--ep-border);
+    border-bottom: none;
+  }
+  .ep-preview-frame { padding: .75rem .5rem; }
+}
+
+/* ── Safe-area bottom for iOS home-bar ── */
+@media (max-width: 900px) {
+  .ep-form-footer {
+    padding-bottom: calc(.75rem + env(safe-area-inset-bottom));
+  }
+  .ep-root {
+    /* Account for iOS notch */
+    padding-top: env(safe-area-inset-top);
+  }
+}
